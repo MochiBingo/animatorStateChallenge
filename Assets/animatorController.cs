@@ -35,7 +35,7 @@ public class animatorController : MonoBehaviour
         }
         else if (Input.mouseScrollDelta.y > 3.0f)
         {
-            Input.mouseScrollDelta.y = 3.0f;
+            //Input.mouseScrollDelta.y = 3.0f;
         }
     }
 }
