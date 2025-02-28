@@ -9,12 +9,13 @@ public class animatorController : MonoBehaviour
     public Animator scrollAnimator;
     public Animator triggerAnimator;
     public Material floatMat;
-    private Vector2 scrollValue = Vector2.zero;
+    private float scrollValue;
     public bool boolValue;
     public float floatValue;
     void Start()
     {
         boolValue = false;
+        scrollValue = Input.mouseScrollDelta.y;
     }
     void Update()
     {
@@ -28,35 +29,29 @@ public class animatorController : MonoBehaviour
             if (boolValue == false)
             {
                 boolValue = true;
+                boolAnimator.SetBool("ActiveAnim", true);
             }
-            if (boolValue == true)
+            else if (boolValue == true)
             {
                 boolValue = false;
+                boolAnimator.SetBool("ActiveAnim",false);
             }
         }
-        if (Input.mouseScrollDelta.y < 1.0f)
+        if (scrollValue < 1.0f)
         {
             floatMat.color = Color.yellow;
         }
-        else if (Input.mouseScrollDelta.y < 2.0f)
+        else if (scrollValue < 2.0f)
         {
             floatMat.color = Color.green;
         }
-        else if (Input.mouseScrollDelta.y < 3.0f)
+        else if (scrollValue < 3.0f)
         {
             floatMat.color = Color.blue;
         }
-        else if (Input.mouseScrollDelta.y > 3.0f)
+        else if (scrollValue > 3.0f)
         {
             //Input.mouseScrollDelta.y = 3.0f;
-        }
-        if (boolValue == false)
-        {
-            boolAnimator.SetBool("ActiveAnim", true);
-        }
-        if (boolValue == true)
-        {
-            boolAnimator.SetBool("ActiveAnim", false);
         }
     }
 }
